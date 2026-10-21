@@ -1,3 +1,40 @@
+# rpaint – Paint clone in Rust
+
+GUI drawing program built with eframe/egui 0.29 and image 0.25. Runs on X11 and Wayland.
+
+## Features
+
+* Tools: select (move/cut/copy/paste), pencil, brush (round/square), eraser, flood fill, color picker, airbrush, line, rectangle, ellipse
+* Shift: straight lines (45° increments), square, and circle
+* Shape fill modes: outline only, outline + fill, fill only
+* Left-click = foreground color, right-click = background color
+* Palette with 20 classic Paint colors + custom color picker
+* Undo/redo (30 steps), Ctrl+Z / Ctrl+Y
+* Image: crop to selection, resize canvas, scale, flip, rotate, invert, clear
+* Zoom 25%–3200% (Ctrl + mouse wheel), pixel grid at high zoom
+* Open/save PNG, JPEG, and BMP (built-in file picker, no GTK required)
+
+## Language
+
+The app is available in Danish and English. The language is picked from the locale on first start (`da…` results in Danish, otherwise English). Change it at any time under Help → Sprog / Language; the choice is saved in `~/.config/rpaint/lang`.
+
+## Shortcuts
+
+F1 shows the shortcut overview in the program.
+
+`Ctrl+N` / `O` / `S` / `Shift+S` · `Ctrl+Z` / `Y` · `Ctrl+A` / `C` / `X` / `V` · `Delete` · `Enter` (apply selection) · `Ctrl+scroll` (zoom)
+
+## Building on Alpine
+
+```bash
+doas apk add rust cargo build-base
+doas apk add mesa-dri-gallium mesa-egl mesa-gl libxkbcommon libx11 libxcursor libxrandr libxi libxcb \
+             wayland-libs-client wayland-libs-cursor wayland-libs-egl
+
+cd rpaint
+cargo build --release
+./target/release/rpaint
+
 # rpaint – Paint-klon i Rust
 
 GUI-tegneprogram bygget med `eframe/egui` 0.29 og `image` 0.25. Kører på X11 og Wayland.
